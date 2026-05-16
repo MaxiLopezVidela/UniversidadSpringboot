@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Administración de Proyectos de Grado</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 11px;
+      background: #ece9d8;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: linear-gradient(to bottom, #0058e0 0%, #2d7ef7 8%, #1166e8 40%, #0052d3 50%, #0058e8 51%, #1a70ff 100%);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header h1 {
+      color: white;
+      font-size: 13px;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    .main-area {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      height: calc(100vh - 36px);
+    }
+
+    .left-panel {
+      border-right: 1px solid #aca899;
+      overflow-y: auto;
+      background: #f5f4f0;
+    }
+
+    .panel-section { border-bottom: 1px solid #aca899; }
+
+    .panel-section-header {
+      background: linear-gradient(to right, #316ac5 0%, #4a80d0 100%);
+      color: white;
+      padding: 4px 10px;
+      font-weight: bold;
+      font-size: 11px;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+    }
+
+    .panel-section-body { padding: 8px 10px; }
+
+    .xp-field { margin-bottom: 7px; }
+
+    .xp-label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    .xp-input {
+      width: 100%;
+      height: 21px;
+      border: 1px solid #7f9db9;
+      background: white;
+      font-family: Tahoma, sans-serif;
+      font-size: 11px;
+      padding: 0 4px;
+      outline: none;
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.1) inset;
+    }
+    .xp-input:focus { border-color: #316ac5; }
+
+    .xp-textarea {
+      width: 100%;
+      border: 1px solid #7f9db9;
+      background: white;
+      font-family: Tahoma, sans-serif;
+      font-size: 11px;
+      padding: 3px 4px;
+      outline: none;
+      resize: vertical;
+      min-height: 52px;
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.1) inset;
+    }
+    .xp-textarea:focus { border-color: #316ac5; }
+
+    .xp-row { display: flex; gap: 6px; align-items: center; }
+    .xp-row .xp-input { flex: 1; }
+    .xp-unit { color: #444; white-space: nowrap; }
+
+    .xp-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      height: 23px;
+      background: linear-gradient(to bottom, #faf9f4 0%, #e0dfd7 100%);
+      border: 1px solid #7f9db9;
+      border-radius: 3px;
+      font-family: Tahoma, sans-serif;
+      font-size: 11px;
+      cursor: pointer;
+      box-shadow: 1px 1px 0 rgba(255,255,255,0.9) inset;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    .xp-btn:hover { background: linear-gradient(to bottom, #fff6d0 0%, #ffe070 100%); border-color: #e0a000; }
+    .xp-btn:active { background: linear-gradient(to bottom, #e0dfd7 0%, #faf9f4 100%); }
+
+    .xp-btn.green {
+      background: linear-gradient(to bottom, #5cb85c 0%, #3d9e3d 100%);
+      border-color: #2d7a2d; color: white;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+    }
+    .xp-btn.green:hover { background: linear-gradient(to bottom, #70cc70 0%, #4dae4d 100%); }
+
+    .xp-btn.red {
+      background: linear-gradient(to bottom, #e06060 0%, #c03030 100%);
+      border-color: #9a2020; color: white;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+    }
+    .xp-btn.red:hover { background: linear-gradient(to bottom, #ee7070 0%, #d04040 100%); }
+
+    .xp-btn.blue {
+      background: linear-gradient(to bottom, #4a80e0 0%, #2060c0 100%);
+      border-color: #1040a0; color: white;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+    }
+    .xp-btn.blue:hover { background: linear-gradient(to bottom, #5a90ee 0%, #3070d0 100%); }
+
+    .right-panel { display: flex; flex-direction: column; overflow: hidden; }
+
+    .search-area {
+      background: linear-gradient(to bottom, #f5f4ee, #e8e7df);
+      border-bottom: 1px solid #aca899;
+      padding: 4px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .search-area label { font-weight: bold; white-space: nowrap; }
+    .search-area input {
+      flex: 1;
+      height: 21px;
+      border: 1px solid #7f9db9;
+      font-family: Tahoma, sans-serif;
+      font-size: 11px;
+      padding: 0 4px;
+      outline: none;
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.1) inset;
+    }
+    .search-area input:focus { border-color: #316ac5; }
+
+    .search-btn {
+      background: linear-gradient(to bottom, #faf9f4 0%, #e0dfd7 100%);
+      border: 1px solid #b0afa7;
+      border-radius: 3px;
+      padding: 3px 10px;
+      font-family: Tahoma, sans-serif;
+      font-size: 11px;
+      cursor: pointer;
+      height: 22px;
+    }
+    .search-btn:hover { background: linear-gradient(to bottom, #fff9e0 0%, #ffe87a 100%); border-color: #e0a000; }
+
+    .table-area { flex: 1; overflow: auto; background: white; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 11px; }
+
+    thead tr {
+      background: linear-gradient(to bottom, #f0efe8 0%, #dbd9ce 100%);
+      border-bottom: 1px solid #aca899;
+      position: sticky; top: 0; z-index: 1;
+    }
+
+    thead th {
+      padding: 3px 8px;
+      text-align: left;
+      font-weight: bold;
+      border-right: 1px solid #aca899;
+      white-space: nowrap;
+    }
+
+    tbody tr { border-bottom: 1px solid #e8e7df; cursor: pointer; }
+    tbody tr:nth-child(even) { background: #f5f5ff; }
+    tbody tr:hover { background: #ddeeff; }
+    tbody tr.selected { background: #316ac5; }
+    tbody tr.selected td { color: white; }
+
+    tbody td {
+      padding: 2px 8px;
+      border-right: 1px solid #e8e7df;
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .col-plan { max-width: 200px; white-space: normal !important; word-break: break-word; }
+
+    .empty-row td { text-align: center; color: #666; padding: 20px; font-style: italic; }
+
+    .status-bar {
+      background: linear-gradient(to bottom, #e8e7df, #ddd9cc);
+      border-top: 1px solid #aca899;
+      padding: 2px 8px;
+      display: flex;
+      gap: 12px;
+    }
+    .status-panel { border-right: 1px solid #aca899; padding-right: 12px; }
+
+    .msg-box {
+      display: none;
+      margin: 5px 8px;
+      padding: 4px 8px;
+      border-radius: 2px;
+      font-size: 11px;
+      border: 1px solid;
+    }
+    .msg-box.success { display: block; background: #dff0d8; border-color: #5cb85c; color: #2d6a1f; }
+    .msg-box.error   { display: block; background: #f2dede; border-color: #c0392b; color: #8b1a1a; }
+
+    ::-webkit-scrollbar { width: 16px; height: 16px; }
+    ::-webkit-scrollbar-track { background: #d4d0c8; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #e0dfd8, #c8c6be); border: 1px solid #aca899; }
+    ::-webkit-scrollbar-button { background: #d4d0c8; border: 1px solid #aca899; height: 16px; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <span style="font-size:18px">🎓</span>
+  <h1>Sistema de Administración de Proyectos de Grado</h1>
+</div>
+
+<div class="main-area">
+
+  <div class="left-panel">
+    <div id="msg" class="msg-box"></div>
+
+    <div class="panel-section">
+      <div class="panel-section-header">👤 Datos del Estudiante</div>
+      <div class="panel-section-body">
+        <div class="xp-field">
+          <label class="xp-label">Nombre:</label>
+          <input class="xp-input" type="text" id="nombre"/>
+        </div>
+        <div class="xp-field">
+          <label class="xp-label">Apellido:</label>
+          <input class="xp-input" type="text" id="apellido"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-section-header">📋 Datos del Proyecto de Grado</div>
+      <div class="panel-section-body">
+        <div class="xp-field">
+          <label class="xp-label">Título:</label>
+          <input class="xp-input" type="text" id="titulo"/>
+        </div>
+        <div class="xp-field">
+          <label class="xp-label">Alcance:</label>
+          <input class="xp-input" type="text" id="alcance"/>
+        </div>
+        <div class="xp-field">
+          <label class="xp-label">Objetivo:</label>
+          <input class="xp-input" type="text" id="objetivo"/>
+        </div>
+        <div class="xp-field">
+          <label class="xp-label">Costo (USD):</label>
+          <input class="xp-input" type="number" id="costo"/>
+        </div>
+        <div class="xp-field">
+          <label class="xp-label">Tiempo de realización:</label>
+          <div class="xp-row">
+            <input class="xp-input" type="number" id="tiempo"/>
+            <span class="xp-unit">meses</span>
+          </div>
+        </div>
+        <div class="xp-field">
+          <label class="xp-label">Viabilidad:</label>
+          <div class="xp-row">
+            <input class="xp-input" type="number" id="viabilidad" min="0" max="10"/>
+            <span class="xp-unit">/ 10</span>
+          </div>
+        </div>
+        <div class="xp-field">
+          <label class="xp-label">Plan de Proyecto:</label>
+          <textarea class="xp-textarea" id="plan"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-section-header">⚙ Acciones</div>
+      <div class="panel-section-body">
+        <button class="xp-btn green" onclick="cargarEstudiante()">💾 Cargar Estudiante</button>
+        <button class="xp-btn blue" onclick="editarEstudiante()">✏️ Editar Estudiante/Proyecto</button>
+        <button class="xp-btn red" onclick="borrarEstudiante()">🗑 Borrar Estudiante/Proyecto</button>
+        <button class="xp-btn" onclick="limpiarFormulario()">✖ Limpiar campos</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="search-area">
+      <label>🔍 Buscar:</label>
+      <input type="text" id="filtro" placeholder="Nombre o apellido..." onkeyup="buscarEstudiante()"/>
+      <button class="search-btn" onclick="buscarEstudiante()">Buscar</button>
+    </div>
+
+    <div class="table-area">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Título</th>
+            <th>Alcance</th>
+            <th>Objetivo</th>
+            <th>Costo (USD)</th>
+            <th>Tiempo</th>
+            <th>Viabilidad</th>
+            <th>Plan de Proyecto</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr class="empty-row"><td colspan="10">Cargando datos...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="status-bar">
+      <span class="status-panel" id="status-count">0 objeto(s)</span>
+      <span id="status-selected">Ninguno seleccionado</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API = 'http://localhost:9001/api/v1/estudiantes';
+  let selectedId = null;
+  let selectedProyectoId = null;
+  let estudiantes = [];
+
+  async function cargarTabla() {
+    try {
+      const res = await fetch(API);
+      estudiantes = await res.json();
+      renderTabla(estudiantes);
+      document.getElementById('status-count').textContent = `${estudiantes.length} objeto(s)`;
+    } catch {
+      mostrarMsg('Error al conectar con el servidor en localhost:9001', 'error');
+    }
+  }
+
+  function renderTabla(data) {
+    const tbody = document.getElementById('tbody');
+    if (!data.length) {
+      tbody.innerHTML = '<tr class="empty-row"><td colspan="10">No hay estudiantes registrados.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = data.map(e => {
+      const p = e.proyectoDeGrado;
+      return `<tr onclick="seleccionarFila(${e.id})" id="fila-${e.id}" class="${e.id===selectedId?'selected':''}">
+        <td>${e.id}</td>
+        <td>${e.nombre}</td>
+        <td>${e.apellido}</td>
+        <td>${p ? p.titulo : '-'}</td>
+        <td>${p ? p.alcance : '-'}</td>
+        <td>${p ? p.objetivo : '-'}</td>
+        <td>${p ? '$'+p.costo.toLocaleString() : '-'}</td>
+        <td>${p ? p.tiempoDeRealizacion+' meses' : '-'}</td>
+        <td>${p ? p.viabilidad+'/10' : '-'}</td>
+        <td class="col-plan">${p ? p.planDeProyecto : '-'}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  function seleccionarFila(id) {
+    selectedId = id;
+    const est = estudiantes.find(e => e.id === id);
+    if (!est) return;
+
+    document.getElementById('nombre').value = est.nombre || '';
+    document.getElementById('apellido').value = est.apellido || '';
+
+    const p = est.proyectoDeGrado;
+    selectedProyectoId = p ? p.id : null;
+
+    document.getElementById('titulo').value = p ? p.titulo : '';
+    document.getElementById('alcance').value = p ? p.alcance : '';
+    document.getElementById('objetivo').value = p ? p.objetivo : '';
+    document.getElementById('costo').value = p ? p.costo : '';
+    document.getElementById('tiempo').value = p ? p.tiempoDeRealizacion : '';
+    document.getElementById('viabilidad').value = p ? p.viabilidad : '';
+    document.getElementById('plan').value = p ? p.planDeProyecto : '';
+
+    document.querySelectorAll('tbody tr').forEach(r => r.classList.remove('selected'));
+    document.getElementById(`fila-${id}`)?.classList.add('selected');
+    document.getElementById('status-selected').textContent =
+      `Seleccionado: ${est.nombre} ${est.apellido} (ID: ${id})`;
+  }
+
+  async function cargarEstudiante() {
+    const body = buildBody(false);
+    if (!body) return;
+    try {
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) throw new Error();
+      mostrarMsg('Estudiante cargado correctamente.', 'success');
+      limpiarFormulario();
+      cargarTabla();
+    } catch {
+      mostrarMsg('Error al cargar el estudiante.', 'error');
+    }
+  }
+
+  async function editarEstudiante() {
+    if (!selectedId) {
+      mostrarMsg('Seleccioná un estudiante de la tabla primero.', 'error');
+      return;
+    }
+    const body = buildBody(true);
+    if (!body) return;
+    try {
+      const res = await fetch(`${API}/${selectedId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) throw new Error();
+      mostrarMsg('Estudiante actualizado correctamente.', 'success');
+      limpiarFormulario();
+      cargarTabla();
+    } catch {
+      mostrarMsg('Error al editar el estudiante.', 'error');
+    }
+  }
+
+  async function borrarEstudiante() {
+    if (!selectedId) {
+      mostrarMsg('Seleccioná un estudiante de la tabla primero.', 'error');
+      return;
+    }
+    if (!confirm('¿Estás seguro de borrar este estudiante y su proyecto de grado?')) return;
+    try {
+      const res = await fetch(`${API}/${selectedId}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error();
+      mostrarMsg('Estudiante eliminado correctamente.', 'success');
+      limpiarFormulario();
+      cargarTabla();
+    } catch {
+      mostrarMsg('Error al borrar el estudiante.', 'error');
+    }
+  }
+
+  function buscarEstudiante() {
+    const filtro = document.getElementById('filtro').value.toLowerCase();
+    const filtrados = estudiantes.filter(e =>
+      e.nombre.toLowerCase().includes(filtro) ||
+      e.apellido.toLowerCase().includes(filtro)
+    );
+    renderTabla(filtrados);
+    document.getElementById('status-count').textContent = `${filtrados.length} objeto(s)`;
+  }
+
+  function buildBody(incluyeIdProyecto) {
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
+    const titulo = document.getElementById('titulo').value.trim();
+    if (!nombre || !apellido || !titulo) {
+      mostrarMsg('Completá nombre, apellido y título del proyecto.', 'error');
+      return null;
+    }
+
+    const proyecto = {
+      titulo,
+      alcance: document.getElementById('alcance').value.trim(),
+      objetivo: document.getElementById('objetivo').value.trim(),
+      costo: parseInt(document.getElementById('costo').value) || 0,
+      tiempoDeRealizacion: parseInt(document.getElementById('tiempo').value) || 0,
+      viabilidad: parseInt(document.getElementById('viabilidad').value) || 0,
+      planDeProyecto: document.getElementById('plan').value.trim()
+    };
+
+    if (incluyeIdProyecto && selectedProyectoId) {
+      proyecto.id = selectedProyectoId;
+    }
+
+    return { nombre, apellido, proyectoDeGrado: proyecto };
+  }
+
+  function limpiarFormulario() {
+    ['nombre','apellido','titulo','alcance','objetivo','costo','tiempo','viabilidad','plan']
+      .forEach(id => document.getElementById(id).value = '');
+    selectedId = null;
+    selectedProyectoId = null;
+    document.querySelectorAll('tbody tr').forEach(r => r.classList.remove('selected'));
+    document.getElementById('status-selected').textContent = 'Ninguno seleccionado';
+    document.getElementById('msg').className = 'msg-box';
+  }
+
+  function mostrarMsg(texto, tipo) {
+    const msg = document.getElementById('msg');
+    msg.textContent = texto;
+    msg.className = `msg-box ${tipo}`;
+    setTimeout(() => msg.className = 'msg-box', 4000);
+  }
+
+  cargarTabla();
+</script>
+</body>
+</html>
