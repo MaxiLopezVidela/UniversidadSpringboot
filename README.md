@@ -21,3 +21,6 @@ La base de datos `db_universidad` se crea automáticamente al iniciar el proyect
 1. Abrir el proyecto en IntelliJ
 2. Correr `UniversidadApplication.kt`
 3. Abrir el navegador en `http://localhost:9001/index.html`
+
+## Documentación
+Se encuentra en la carpeta "docs"
