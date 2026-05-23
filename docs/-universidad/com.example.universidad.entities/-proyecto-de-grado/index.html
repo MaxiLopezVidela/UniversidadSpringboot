@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ProyectoDeGrado</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    Universidad
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+0.0.1-SNAPSHOT        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Universidad
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="Universidad::com.example.universidad.entities/ProyectoDeGrado///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">Universidad</a><span class="delimiter">/</span><a href="../index.html">com.example.universidad.entities</a><span class="delimiter">/</span><span class="current">ProyectoDeGrado</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Proyecto</span><wbr></wbr><span>De</span><wbr></wbr><span><span>Grado</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="jakarta.persistence/Entity///PointingToDeclaration/"><span class="token annotation builtin">Entity</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div><span class="token keyword">public </span><span class="token keyword"></span><span class="token keyword">class </span><a href="index.html">ProyectoDeGrado</a><span class="token keyword"> extends </span><a href="../-base/index.html">Base</a></div><p class="paragraph">Representa el proyecto de grado de un estudiante. Contiene toda la información académica del proyecto.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1285117335%2FConstructors%2F-251573632" anchor-label="ProyectoDeGrado" id="1285117335%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proyecto-de-grado.html"><span>Proyecto</span><wbr></wbr><span>De</span><wbr></wbr><span><span>Grado</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1285117335%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="index.html">ProyectoDeGrado</a> <a href="-proyecto-de-grado.html"><span class="token function">ProyectoDeGrado</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> titulo<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> objetivo<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> alcance<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Integer.html">Integer</a> costo<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Integer.html">Integer</a> tiempoDeRealizacion<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Integer.html">Integer</a> viabilidad<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> planDeProyecto</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-383130793%2FProperties%2F-251573632" anchor-label="alcance" id="-383130793%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-383130793%2FProperties%2F-251573632"><span><span>alcance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-383130793%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> <a href="index.html#-383130793%2FProperties%2F-251573632">alcance</a></div><div class="brief "><p class="paragraph">Alcance del proyecto.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-235607908%2FProperties%2F-251573632" anchor-label="costo" id="-235607908%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-235607908%2FProperties%2F-251573632"><span><span>costo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-235607908%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Integer.html">Integer</a> <a href="index.html#-235607908%2FProperties%2F-251573632">costo</a></div><div class="brief "><p class="paragraph">Costo estimado del proyecto en dólares.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-656161039%2FProperties%2F-251573632" anchor-label="id" id="-656161039%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-656161039%2FProperties%2F-251573632"><span><span>id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-656161039%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Long.html">Long</a> <a href="index.html#-656161039%2FProperties%2F-251573632">id</a></div><div class="brief "><p class="paragraph">Identificador único autogenerado por la base de datos.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="573175680%2FProperties%2F-251573632" anchor-label="objetivo" id="573175680%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#573175680%2FProperties%2F-251573632"><span><span>objetivo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="573175680%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> <a href="index.html#573175680%2FProperties%2F-251573632">objetivo</a></div><div class="brief "><p class="paragraph">Objetivo principal del proyecto.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1276240429%2FProperties%2F-251573632" anchor-label="planDeProyecto" id="1276240429%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1276240429%2FProperties%2F-251573632"><span>plan</span><wbr></wbr><span>De</span><wbr></wbr><span><span>Proyecto</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1276240429%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> <a href="index.html#1276240429%2FProperties%2F-251573632">planDeProyecto</a></div><div class="brief "><p class="paragraph">Plan detallado del proyecto con sus fases.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2124503012%2FProperties%2F-251573632" anchor-label="tiempoDeRealizacion" id="2124503012%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#2124503012%2FProperties%2F-251573632"><span>tiempo</span><wbr></wbr><span>De</span><wbr></wbr><span><span>Realizacion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2124503012%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Integer.html">Integer</a> <a href="index.html#2124503012%2FProperties%2F-251573632">tiempoDeRealizacion</a></div><div class="brief "><p class="paragraph">Tiempo estimado de realización en meses.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1882522979%2FProperties%2F-251573632" anchor-label="titulo" id="1882522979%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1882522979%2FProperties%2F-251573632"><span><span>titulo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1882522979%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> <a href="index.html#1882522979%2FProperties%2F-251573632">titulo</a></div><div class="brief "><p class="paragraph">Título del proyecto de grado.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-400515097%2FProperties%2F-251573632" anchor-label="viabilidad" id="-400515097%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-400515097%2FProperties%2F-251573632"><span><span>viabilidad</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-400515097%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Integer.html">Integer</a> <a href="index.html#-400515097%2FProperties%2F-251573632">viabilidad</a></div><div class="brief "><p class="paragraph">Porcentaje de viabilidad del proyecto sobre 10.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-2138573333%2FFunctions%2F-251573632" anchor-label="getAlcance" id="-2138573333%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-alcance.html"><span>get</span><wbr></wbr><span><span>Alcance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2138573333%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> <a href="get-alcance.html"><span class="token function">getAlcance</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Alcance del proyecto.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1390505936%2FFunctions%2F-251573632" anchor-label="getCosto" id="-1390505936%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-costo.html"><span>get</span><wbr></wbr><span><span>Costo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1390505936%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Integer.html">Integer</a> <a href="get-costo.html"><span class="token function">getCosto</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Costo estimado del proyecto en dólares.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1727817597%2FFunctions%2F-251573632" anchor-label="getId" id="1727817597%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-base/get-id.html"><span>get</span><wbr></wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1727817597%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Long.html">Long</a> <a href="../-base/get-id.html"><span class="token function">getId</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Identificador único autogenerado por la base de datos.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1989031788%2FFunctions%2F-251573632" anchor-label="getObjetivo" id="1989031788%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-objetivo.html"><span>get</span><wbr></wbr><span><span>Objetivo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1989031788%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> <a href="get-objetivo.html"><span class="token function">getObjetivo</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Objetivo principal del proyecto.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="843677977%2FFunctions%2F-251573632" anchor-label="getPlanDeProyecto" id="843677977%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-plan-de-proyecto.html"><span>get</span><wbr></wbr><span>Plan</span><wbr></wbr><span>De</span><wbr></wbr><span><span>Proyecto</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="843677977%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> <a href="get-plan-de-proyecto.html"><span class="token function">getPlanDeProyecto</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Plan detallado del proyecto con sus fases.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="322186360%2FFunctions%2F-251573632" anchor-label="getTiempoDeRealizacion" id="322186360%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-tiempo-de-realizacion.html"><span>get</span><wbr></wbr><span>Tiempo</span><wbr></wbr><span>De</span><wbr></wbr><span><span>Realizacion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="322186360%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Integer.html">Integer</a> <a href="get-tiempo-de-realizacion.html"><span class="token function">getTiempoDeRealizacion</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Tiempo estimado de realización en meses.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="440422479%2FFunctions%2F-251573632" anchor-label="getTitulo" id="440422479%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-titulo.html"><span>get</span><wbr></wbr><span><span>Titulo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="440422479%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String</a> <a href="get-titulo.html"><span class="token function">getTitulo</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Título del proyecto de grado.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1267428141%2FFunctions%2F-251573632" anchor-label="getViabilidad" id="-1267428141%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-viabilidad.html"><span>get</span><wbr></wbr><span><span>Viabilidad</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1267428141%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Integer.html">Integer</a> <a href="get-viabilidad.html"><span class="token function">getViabilidad</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Porcentaje de viabilidad del proyecto sobre 10.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-833071192%2FFunctions%2F-251573632" anchor-label="setId" id="-833071192%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-base/set-id.html"><span>set</span><wbr></wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-833071192%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a> <a href="../-base/set-id.html"><span class="token function">setId</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Long.html">Long</a> id</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Identificador único autogenerado por la base de datos.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
